@@ -1,0 +1,94 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Clinic Flow dashboard for tracking patient queue and consultation status." />
+  <title>Clinic Flow Board</title>
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <main class="dashboard-shell">
+    <section class="summary-panel panel" aria-labelledby="dashboard-title">
+      <div class="panel-header compact">
+        <div>
+          <p class="eyebrow">Clinic Flow</p>
+          <h1 id="dashboard-title">Patient board</h1>
+        </div>
+        <button type="button" class="secondary-button" id="reset-demo">Reset demo</button>
+      </div>
+
+      <div class="stats-grid" aria-label="Clinic statistics">
+        <article class="stat-card accent">
+          <span class="stat-label">Waiting</span>
+          <strong class="stat-value" id="waiting-count">0</strong>
+        </article>
+        <article class="stat-card blue">
+          <span class="stat-label">In consult</span>
+          <strong class="stat-value" id="consult-count">0</strong>
+        </article>
+        <article class="stat-card green">
+          <span class="stat-label">Completed</span>
+          <strong class="stat-value" id="completed-count">0</strong>
+        </article>
+        <article class="stat-card violet">
+          <span class="stat-label">Total</span>
+          <strong class="stat-value" id="total-count">0</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="queue-panel panel" aria-labelledby="queue-title">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Queue</p>
+          <h2 id="queue-title">Today's appointments</h2>
+        </div>
+      </div>
+
+      <form class="patient-form" id="patient-form">
+        <label class="sr-only" for="patient-name">Patient name</label>
+        <input id="patient-name" name="patient-name" type="text" maxlength="80" placeholder="Patient name" autocomplete="off" required />
+
+        <label class="sr-only" for="doctor-select">Doctor</label>
+        <select id="doctor-select" name="doctor">
+          <option value="Dr. Patel">Dr. Patel</option>
+          <option value="Dr. Chen">Dr. Chen</option>
+          <option value="Dr. Ramirez">Dr. Ramirez</option>
+          <option value="Dr. Hassan">Dr. Hassan</option>
+        </select>
+
+        <label class="sr-only" for="visit-select">Visit type</label>
+        <select id="visit-select" name="visit-type">
+          <option value="Check-up">Check-up</option>
+          <option value="Follow-up">Follow-up</option>
+          <option value="Consultation">Consultation</option>
+          <option value="Lab review">Lab review</option>
+        </select>
+
+        <label class="sr-only" for="priority-select">Priority</label>
+        <select id="priority-select" name="priority">
+          <option value="Routine">Routine</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+
+        <button type="submit" class="primary-button">Add patient</button>
+      </form>
+
+      <div class="toolbar" aria-label="Queue filters">
+        <div class="filters" role="group" aria-label="Filter patient queue">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="waiting">Waiting</button>
+          <button class="filter-button" type="button" data-filter="in-consultation">In consult</button>
+          <button class="filter-button" type="button" data-filter="completed">Completed</button>
+        </div>
+      </div>
+
+      <div class="patient-list" id="patient-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="project.js"></script>
+</body>
+</html>
